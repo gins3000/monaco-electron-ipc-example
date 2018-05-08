@@ -1,0 +1,34 @@
+{
+  "name": "monaco-electron-ipc-example",
+  "version": "0.1.0",
+  "description": "Minimal example how to use a language server with monaco in electron via IPC and stdio",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "lint": "tslint -c tslint.json -p tsconfig.json",
+    "start": "npm run build && electron ./dist/backend/main.js"
+  },
+  "repository": "",
+  "keywords": [
+    "Electron",
+    "language server",
+    "monaco",
+    "demo",
+    "sample",
+    "typescript"
+  ],
+  "author": "gins3000",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/mz": "0.0.32",
+    "electron": "^1.8.4",
+    "tslint": "^5.10.0",
+    "typescript": "^2.8.3"
+  },
+  "dependencies": {
+    "monaco-languageclient": "^0.6.3",
+    "monaco-typescript": "^3.1.0",
+    "mz": "^2.7.0",
+    "typescript-language-server": "^0.1.11"
+  }
+}

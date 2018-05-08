@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Monaco with TypeScript Language Server</title>
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      display: block;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+</body>
+
+<!-- Loading monaco as shown here: https://github.com/Microsoft/monaco-editor-samples/tree/master/electron-amd -->
+<script>
+  // monaco require overload
+  var nodeRequire = require;
+</script>
+<script src="./node_modules/monaco-editor-core/dev/vs/loader.js"></script>
+<script>
+  monacoRequire = require;
+  require = nodeRequire;
+  // workaround monaco-css not understanding the environment
+  self.module = undefined;
+  // workaround monaco-typescript not understanding the environment
+  self.process.browser = true;
+</script>
+<!-- -->
+
+<script>
+  require('./dist/frontend/index.js')
+</script>
+
+</html>
