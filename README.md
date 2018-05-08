@@ -23,6 +23,8 @@ communicating via stdio with the language server and via IPC with the frontend.
 
 ## Run the example
 ```
+git clone https://github.com/gins3000/monaco-electron-ipc-example.git
+cd monaco-electron-ipc-example
 npm install
 npm start
 ```
