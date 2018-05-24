@@ -44,5 +44,9 @@ monacoRequire(["vs/editor/editor.main"], async () => {
 });
 
 function pathToUri(path: string) {
-  return monaco.Uri.parse("file:///" + path.replace(/\\/g, "/"));
+  if (/^[A-Za-z]:\\/.test(path)) {
+    path = "/" + path[0].toLowerCase() + path.slice(1);
+  }
+
+  return monaco.Uri.parse("file://" + path.replace(/\\/g, "/"));
 }
