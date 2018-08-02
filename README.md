@@ -12,7 +12,7 @@ In Electron, the language servers would be started in the main process, and the 
 needs to be forwarded to the browser window, where monaco is hosted.
 
 However, if a MessageConnection is created in the main process, and then simply passed to the window via
-remote require, sever performance issues will be encountered.
+remote require, severe performance issues will be encountered.
 
 One way to work around this, is to use websockets, as one would when building monaco into a web page,
 and hosting the language server remotely. However in a local environment such as an Electron-based desktop app,
