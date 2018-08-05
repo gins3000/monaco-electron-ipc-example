@@ -1,6 +1,6 @@
 {
   "name": "monaco-electron-ipc-example",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Minimal example how to use a language server with monaco in electron via IPC and stdio",
   "scripts": {
     "build": "tsc && webpack",
