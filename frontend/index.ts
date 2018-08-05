@@ -14,7 +14,7 @@ const filePath = "frontend/index.ts";
 // get monaco loader's require, see index.html
 const monacoRequire = (global as any).monacoRequire;
 monacoRequire.config({
-  baseUrl: backendUtil.path.resolve(__dirname + "/../../node_modules/monaco-editor-core/dev")
+  baseUrl: backendUtil.path.resolve("./node_modules/monaco-editor-core/dev")
 });
 
 // load monaco

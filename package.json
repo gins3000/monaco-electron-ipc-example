@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Minimal example how to use a language server with monaco in electron via IPC and stdio",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && webpack",
     "watch": "tsc -w",
     "lint": "tslint -c tslint.json -p tsconfig.json",
     "start": "npm run build && electron ./dist/backend/main.js"
@@ -22,13 +22,16 @@
   "devDependencies": {
     "@types/mz": "0.0.32",
     "electron": "^1.8.4",
+    "source-map-loader": "^0.2.3",
     "tslint": "^5.10.0",
-    "typescript": "^2.8.3"
+    "typescript": "^3.0.1",
+    "webpack": "^4.16.4",
+    "webpack-cli": "^3.1.0"
   },
   "dependencies": {
-    "monaco-languageclient": "^0.6.3",
+    "monaco-languageclient": "^0.7.2",
     "monaco-typescript": "^3.1.0",
     "mz": "^2.7.0",
-    "typescript-language-server": "^0.1.11"
+    "typescript-language-server": "^0.2.0"
   }
 }

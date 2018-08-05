@@ -1,9 +1,9 @@
 import {
-  BaseLanguageClient,
   CloseAction,
   createConnection,
-  createMonacoServices,
-  ErrorAction
+  ErrorAction,
+  MonacoLanguageClient,
+  MonacoServices
 } from "monaco-languageclient";
 import {
   createMessageConnection,
@@ -21,8 +21,8 @@ import * as languageServerLauncherModule from "../backend/language-server-launch
 import { requireBackend } from "./util";
 
 export function startLanguageClient(editor: monaco.editor.IStandaloneCodeEditor, rootUri: string) {
-  // create services
-  const services = createMonacoServices(editor, { rootUri });
+  // create & install services
+  MonacoServices.install(editor, { rootUri });
 
   // launch language server
   const lsLauncher = requireBackend<typeof languageServerLauncherModule>("./language-server-launcher");
@@ -34,14 +34,14 @@ export function startLanguageClient(editor: monaco.editor.IStandaloneCodeEditor,
   const connection = createMessageConnection(reader, writer);
 
   // create and start the language client
-  const client = createBaseLanguageClient(services, connection);
+  const client = createBaseLanguageClient(connection);
   client.start();
 
   return client;
 }
 
-function createBaseLanguageClient(services: BaseLanguageClient.IServices, connection: MessageConnection) {
-  const client = new BaseLanguageClient({
+function createBaseLanguageClient(connection: MessageConnection) {
+  const client = new MonacoLanguageClient({
     clientOptions: {
       documentSelector: ["typescript"],
       errorHandler: {
@@ -52,8 +52,7 @@ function createBaseLanguageClient(services: BaseLanguageClient.IServices, connec
     connectionProvider: {
       get: async (errorHandler, closeHandler) => createConnection(connection, errorHandler, closeHandler)
     },
-    name: "typescript language server",
-    services
+    name: "typescript language server"
   });
 
   // for debugging
